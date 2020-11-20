@@ -1,5 +1,9 @@
 .o_image_cell .o_field_image img{
-    width:30px;
+    width:32px;
+    min-width:32px;
+    height:32px;
+    border-radius: 50%;
+    background-color:  white;
 }
 
 .tooltip_image {
