@@ -123,6 +123,8 @@ odoo.define('web_timeline.TimelineView', function (require) {
                 selectable: true,
                 multiselect: true,
                 showCurrentTime: true,
+                verticalScroll: true,
+                zoomFriction: 100,
                 stack: this.stack,
                 margin: JSON.parse(this.margin),
                 zoomKey: this.zoomKey
