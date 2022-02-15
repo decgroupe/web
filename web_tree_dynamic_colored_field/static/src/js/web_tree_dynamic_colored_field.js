@@ -94,6 +94,9 @@ odoo.define('web_tree_dynamic_colored_field', function (require) {
                     var pair = colors[i],
                         color = pair[0],
                         expression = pair[1];
+                        if (color in ctx && ctx[color]){
+                            color = ctx[color];
+                        }
                     if (py.evaluate(expression, ctx).toJSON()) {
                         $td.css(cssAttribute, color);
                     }
