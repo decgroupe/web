@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="web.Many2OneAvatar">
+        <img t-att-src="url" t-att-alt="value" class="o_m2o_avatar"/>
+        <span t-esc="value"/>
+    </t>
+
+    <!-- MailMany2OneAvatar: do not display the display_name in kanban views -->
+    <t t-name="mail.KanbanMany2OneAvatarUser" t-extend="web.Many2OneAvatar">
+        <t t-jquery="img" t-operation="attributes">
+            <attribute name="t-att-title">value</attribute>
+        </t>
+        <t t-jquery="span" t-operation="replace"/>
+    </t>
+
+</templates>
