@@ -63,7 +63,7 @@ odoo.define("web_tree_many2one_clickable.many2one_clickable", function (require)
                         }),
                     });
                 });
-                this.$el.append($a);
+                this.$el.prepend($a);
             }
         },
     });

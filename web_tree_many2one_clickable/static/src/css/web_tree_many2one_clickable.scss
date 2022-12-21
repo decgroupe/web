@@ -1,10 +1,16 @@
-td.o_many2one_cell {
-    a {
-        margin-left: 0.5em;
-        visibility: hidden;
-    }
+.o_list_view {
+    td.o_many2one_cell {
+        a {
+            margin-right: 0.5em;
+            display: none;
+        }
 
-    &:hover a {
-        visibility: visible;
+        &:hover a {
+            display: inherit;
+        }
+
+        span {
+            white-space: nowrap;
+        }
     }
 }
