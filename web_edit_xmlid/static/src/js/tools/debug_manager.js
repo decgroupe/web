@@ -7,7 +7,7 @@ odoo.define("web_edit_xmlid.DebugManager", function (require) {
     var field_utils = require("web.field_utils");
     var session = require("web.session");
 
-    var DebugManager = require("web.DebugManager");
+    var DebugManager = require("web.DebugManager.Backend");
 
     var QWeb = core.qweb;
     var _t = core._t;
