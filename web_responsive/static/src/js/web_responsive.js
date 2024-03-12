@@ -155,6 +155,9 @@ odoo.define("web_responsive", function (require) {
             this._super.apply(this, arguments);
             ev.preventDefault();
             ev.stopPropagation();
+            var img =  $(ev.currentTarget).children('.o-app-icon');
+            var favicon_link = $("[rel='shortcut icon']");
+            favicon_link.attr("href" , img.attr("src"));
         },
 
         /**
