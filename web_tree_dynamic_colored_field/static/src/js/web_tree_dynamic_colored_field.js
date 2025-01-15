@@ -7,6 +7,38 @@ odoo.define("web_tree_dynamic_colored_field", function (require) {
 
     ListRenderer.include({
         /**
+         * Look up for a `color_field` or ``bg_color_field`` parameter in tree `colors` attribute
+         *
+         * @override
+         */
+        _renderBody: function () {
+            if (this.arch.attrs.colors) {
+                var colorAttr = this.arch.attrs.colors.split(';');
+                for (var i=0, len=colorAttr.length; i<len; i++) {
+                    var attr = colorAttr[i].split(':')
+                    if (attr.length == 2) {
+                        var colorType = attr[0].trim()
+                        var colorField = attr[1].trim();
+                        // validate the presence of that field in tree view
+                        if (this.state.data.length && colorField in this.state.data[0].data) {
+                            if (colorType === "color_field") {
+                                this.colorField = colorField;
+                            } else if (colorType === "bg_color_field") {
+                                this.bgColorField = colorField;
+                            }
+                        } else {
+                            console.warn(
+                                "No field named '" + colorField + "' present in view."
+                            );
+                        }
+                    } else {
+                        console.warn("Invalid colors attribute:", attr);
+                    }
+                }
+            }
+            return this._super();
+        },
+        /**
          * Colorize a cell during it's render
          *
          * @override
@@ -27,6 +59,16 @@ odoo.define("web_tree_dynamic_colored_field", function (require) {
          * @param {Object} ctx evaluation context for the record
          */
         applyColorize: function ($td, record, node, ctx) {
+            // safely resolve value of `color_field` given in <tree>
+            var treeColor = record.data[this.colorField];
+            if (treeColor) {
+                $td.css('color', treeColor);
+            }
+            var treeBgColor = record.data[this.bgColorField];
+            if (treeBgColor) {
+                $td.css('background-color', treeBgColor);
+            }
+            // apply <field>'s own `options`
             if (!node.attrs.options) {
                 return;
             }
