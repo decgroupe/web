@@ -16,12 +16,7 @@ odoo.define("web_search_with_and/static/src/js/search_bar.js", function (require
             // - Selection sources
             // - "no result" items
             if (source.active) {
-                const labelValue = source.label || this.state.inputValue;
-                console.log(
-                    "------------- addAutoCompletionValues11 -------------",
-                    source,
-                    this.isShiftKey
-                );
+                const labelValue = source.label || this.state.inputValue.trim();
                 this.model.dispatch("addAutoCompletionValues", {
                     filterId: source.filterId,
                     value:
