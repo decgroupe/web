@@ -1,10 +1,12 @@
 td.o_list_many2one {
     button.web_tree_many2one_clickable {
-        margin-left: 0.5em;
-        visibility: hidden;
+        line-height: 0.9;
+        font-size: 0.8em;
+        margin-right: 0.5em;
+        display: none;
     }
 
     &:hover button.web_tree_many2one_clickable {
-        visibility: visible;
+        display: inherit;
     }
 }
