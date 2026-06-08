@@ -33,6 +33,12 @@ export class AppMenuItem extends Component {
 
     onClick() {
         if (typeof this.props.onClick === "function") {
+            const faviconLink = document.querySelector("link[rel~='icon']");
+            if (faviconLink) {
+                if (this.webIconData) {
+                    faviconLink.href = this.webIconData;
+                }
+            }
             this.props.onClick(this.props.app);
         }
     }
